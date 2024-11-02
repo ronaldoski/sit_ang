@@ -14,7 +14,7 @@ function App() {
 <nav>
 
 
-<Home nom= {["yo","yo"]} onClick={Handleclick}/>
+<Home nom= {["yooooo","yo"]} onClick={Handleclick}/>
 
 
 </nav>
