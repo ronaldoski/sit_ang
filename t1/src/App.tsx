@@ -19,9 +19,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import HomePage from './composant/HomePage';
 import SecondPage from './composant/SecondPage';
-import Contact from './composant/contact';
-
 import './composant/AppBar.css';
+import Contact from './composant/Contact';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
