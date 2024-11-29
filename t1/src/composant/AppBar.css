@@ -1,0 +1,21 @@
+/* AppBar.css */
+.AppBar  {
+    background-color: red!important;
+padding: auto;
+justify-content: center;
+  
+  }
+  .btn
+  {
+padding: auto;
+
+text-overflow: clip!important;
+text-shadow: 1cap!important;
+  }
+
+
+  .Box
+  {
+text-align: center;
+  }
+  
