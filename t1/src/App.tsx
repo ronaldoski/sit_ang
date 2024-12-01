@@ -18,7 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import HomePage from './composant/HomePage';
-import SecondPage from './composant/SecondPage';
+import Prj from './composant/Prj';
 import './composant/AppBar.css';
 import Contact from './composant/Contact';
 
@@ -54,7 +54,7 @@ function App() {
                 <Button color="inherit" component={Link} to="/">Home</Button>
               </Grid>
               <Grid item>
-                <Button color="inherit" component={Link} to="/second-page">Projet</Button>
+                <Button color="inherit" component={Link} to="/prj">Projet</Button>
               </Grid>
               <Grid item>
                 <Button color="inherit" component={Link} to="/contact-page">Contact</Button>
@@ -73,7 +73,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/second-page" element={<SecondPage />} />
+            <Route path="/Prj" element={<Prj />} />
             <Route path="/contact-page" element={<Contact />} />
           </Routes>
         </Container>

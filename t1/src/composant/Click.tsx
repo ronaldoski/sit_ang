@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
-
-type ClickableImageProps = {
-  imageSrc: string;
-  altText: string;
-  panelContent: PanelProps;
-}
+import React, { useState, useRef, useEffect } from 'react';
+import styles from './Card.module.css';
 
 type PanelProps = {
   titre?: string;
   img?: string[];
   txt?: string;
-}
+};
 
-// Composant Panel
+type ClickableImageProps = {
+  imageSrc: string;
+  altText: string;
+  panelContent: PanelProps;
+  targetId: string;
+};
+
 const Panel: React.FC<PanelProps> = ({ titre, img, txt }) => {
   return (
-    <div className="panel">
+    <div>
       {titre && <h2>{titre}</h2>}
       {img && img.length > 0 && (
-        <div className="panel-images">
+        <div>
           {img.map((imgSrc, index) => (
-            <img key={index} src={imgSrc} alt={`${titre || 'Image'} ${index + 1}`} />
+            <img key={index} src={imgSrc} alt={`Image ${index + 1}`} />
           ))}
         </div>
       )}
@@ -29,19 +30,32 @@ const Panel: React.FC<PanelProps> = ({ titre, img, txt }) => {
   );
 };
 
-// Composant ClickableImage
-const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText, panelContent }) => {
+const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText, panelContent, targetId }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showPanel && panelRef.current) {
+      panelRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showPanel]);
 
   const handleClick = () => {
     setShowPanel(!showPanel);
+    if (!showPanel) {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
-    <div className="clickable-image-container">
-      <div 
-        className="clickable-image"
+    <>
+      <img
+        src={imageSrc}
+        alt={altText}
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -50,12 +64,10 @@ const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText, pane
           transition: 'transform 0.3s ease-in-out',
           transform: isHovered ? 'scale(1.05)' : 'scale(1)',
         }}
-      >
-        <img src={imageSrc} alt={altText} style={{ width: '100%', height: 'auto' }} />
-      </div>
+      />
       {showPanel && <Panel {...panelContent} />}
-    </div>
+    </>
   );
 };
 
-export default ClickableImage;
+export { ClickableImage, Panel };

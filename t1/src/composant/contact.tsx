@@ -1,34 +1,14 @@
-import React from 'react';
-import Card from './Card';
-import Img from './Img'; 
-import CSvg from './image/camera.svg';
-import ClickableImage from './Click';
-
+import React from "react";
+import styles from './Card.module.css';
 const Contact: React.FC = () => {
-  // Contenu du panel pour l'image cliquable
-  const panelContent = {
-    titre: "Appareil Photo",
-    img: [CSvg, "./image/autre-image.jpg"], // Assurez-vous que ces chemins sont corrects
-    txt: "Ceci est un appareil photo numérique haute résolution."
-  };
+return (
 
-  return (
-    <div className="contact-container">
-      <h1>Contact</h1>
-      
-      <ClickableImage 
-        imageSrc={CSvg}
-        altText="Icône d'appareil photo cliquable"
-        panelContent={panelContent}
-      />
+<div>
 
-      
+  <h1>jjjjjjjjj</h1>
+</div>
 
-      <Img src={CSvg} alt="Icône d'appareil photo statique" />
+);
 
-      <p>N'hésitez pas à nous contacter pour plus d'informations.</p>
-    </div>
-  );
-}
-
-export default Contact;
+      };
+      export default Contact;
