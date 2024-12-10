@@ -95,15 +95,37 @@
 text-align: center;
 
 }
+
 .photo {
-  display: flex;
-  flex-wrap: wrap;
-  width: 10px;
-  height: 10px;
-  border-radius: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes de taille égale */
+  gap: 6px; /* Espacement entre les images */
+   /* S'adapte au conteneur parent */
+  padding: 6px; /* Optionnel : espacement autour des éléments */
+ width: 0px;
+ height: 50px;
 
 }
 
-.photo > * {
-  flex-basis: 50%;
+.column {
+  display: flex;
+  flex-direction: column; /* Dispose tous les éléments en colonne */
+  align-items: center; /* Centre les éléments horizontalement */
+  gap: 6px; /* Espace entre les éléments */
+  width: 100%;
+}
+
+.clickableImageContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  /* Espace entre les colonnes et les lignes */
+  width: 100%; /* S'adapte au parent */
+  max-width: 500px; /* Optionnel : limite la largeur */
+}
+
+.clickableImage {
+  width: 80px; /* Largeur réduite */
+  height: 80px; /* Hauteur réduite */
+  object-fit: cover; /* Ajuste l'image sans la déformer */
+  border-radius: 8px; /* Coins légèrement arrondis */
 }

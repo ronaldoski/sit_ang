@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Card.module.css';
 
 type PanelProps = {
@@ -10,7 +10,6 @@ type PanelProps = {
 type ClickableImageProps = {
   imageSrc: string;
   altText: string;
-  panelContent: PanelProps;
   targetId: string;
 };
 
@@ -21,6 +20,7 @@ const Panel: React.FC<PanelProps> = ({ titre, img, txt }) => {
       {img && img.length > 0 && (
         <div>
           {img.map((imgSrc, index) => (
+            // eslint-disable-next-line jsx-a11y/img-redundant-alt
             <img key={index} src={imgSrc} alt={`Image ${index + 1}`} />
           ))}
         </div>
@@ -30,24 +30,13 @@ const Panel: React.FC<PanelProps> = ({ titre, img, txt }) => {
   );
 };
 
-const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText, panelContent, targetId }) => {
+const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText,  targetId }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [showPanel, setShowPanel] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (showPanel && panelRef.current) {
-      panelRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [showPanel]);
 
   const handleClick = () => {
-    setShowPanel(!showPanel);
-    if (!showPanel) {
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -59,13 +48,13 @@ const ClickableImage: React.FC<ClickableImageProps> = ({ imageSrc, altText, pane
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        className={styles.clickableImage}
         style={{
           cursor: 'pointer',
           transition: 'transform 0.3s ease-in-out',
           transform: isHovered ? 'scale(1.05)' : 'scale(1)',
         }}
       />
-      {showPanel && <Panel {...panelContent} />}
     </>
   );
 };

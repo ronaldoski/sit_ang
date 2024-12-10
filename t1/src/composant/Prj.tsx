@@ -1,47 +1,40 @@
 import React from 'react';
-import { ClickableImage, Panel } from './Click';
+import { ClickableImage } from './Click';
 import CSvg from './image/camera.svg';
-import Card from './Card';
-import styles from './Card.module.css';
 import Dbi from './image/Debit2.svg';
-
-const Prj: React.FC = () => {
-  const panelContent = {
-    titre: "Appareil Photo",
-    img: [CSvg, "./image/autre-image.jpg"],
-    txt: "Ceci est un appareil photo numérique haute résolution. Cliquez pour plus d'informations."
-  };
-
+import styles from './Card.module.css';
+import Card from './Card';
+function Prj() {
   return (
     <div className={styles.column}>
       <header>
-        <Card Titre='skibidi' text='toilet'/>
+        <h1>Projet</h1>
       </header>
-      
-      <main className={styles.photo}>  
-        <ClickableImage 
+
+      <main className={styles.clickableImageContainer}>
+        <ClickableImage
           imageSrc={CSvg}
           altText="Icône d'appareil photo cliquable"
-          panelContent={panelContent}
+          
           targetId="panel-target-1"
         />
-        <ClickableImage 
+        <ClickableImage
           imageSrc={Dbi}
-          altText="Icône de débit cliquable"
-          panelContent={{
-            titre: "Débit",
-            img: [Dbi],
-            txt: "Information sur le débit."
-          }}
+          altText="Icône d'appareil photo cliquable"
           targetId="panel-target-2"
         />
       </main>
-      <div className="contact-info">
-        <h2>Informations de contact</h2>
-        <p>Email: contact@example.com</p>
-        <p>Téléphone: +33 1 23 45 67 89</p>
+
+      <div id="panel-target-1" className={styles.target}>
+        <Card
+Titre=" yatta"
+        text="ooooooooooooooo "  
+        />
+        <h2>Section Appareil Photo</h2>
       </div>
-      <p>N'hésitez pas à nous contacter pour plus d'informations.</p>
+      <div id="panel-target-2" className={styles.target}>
+        <h2>Section Débit</h2>
+      </div>
     </div>
   );
 }
