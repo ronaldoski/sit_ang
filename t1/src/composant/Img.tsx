@@ -7,10 +7,10 @@ type ImgProps = {
 
 const Img: React.FC<ImgProps> = ({ images }) => {
   return (
-    <div className={styles.logo}>
+    <div className={styles.grid}>
       {images.map((image, index) => (
         <div key={index} className={styles.imageWrapper}>
-          <img src={image.src} alt={image.alt} className={styles.image} />
+          <img src={image.src} alt={image.alt} className={styles.logo} />
           <span className={styles.hoverText}>{image.hoverText}</span>
         </div>
       ))}

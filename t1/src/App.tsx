@@ -54,7 +54,7 @@ function App() {
                 <Button color="inherit" component={Link} to="/">Home</Button>
               </Grid>
               <Grid item>
-                <Button color="inherit" component={Link} to="/prj">Projet</Button>
+                <Button color="inherit" component={Link} to="/prj">Project</Button>
               </Grid>
               <Grid item>
                 <Button color="inherit" component={Link} to="/contact-page">Contact</Button>
